@@ -4,7 +4,7 @@ using UnityEditor;
 
 public class Road_Manager : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float speed = 200;
     [SerializeField] GameObject Road;
 
     List<GameObject> Road_List;
@@ -44,7 +44,6 @@ public class Road_Manager : MonoBehaviour
         {
             GameManager.instance.vehicle_Km();
             GameManager.instance.Json_Save();
-            GameManager.instance.Json_Load();
       
             First_Road = Last_Road - 1;
 

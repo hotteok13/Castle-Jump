@@ -548,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652066867215356, guid: 5a0564be916f44248bc20e6c25a796ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.77
+      value: -9.96
       objectReference: {fileID: 0}
     - target: {fileID: 4652066867215356, guid: 5a0564be916f44248bc20e6c25a796ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -920,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 1838615087933094, guid: 01d8db7f314b2504284646720569ebee, type: 3}
       propertyPath: m_Name
       value: farm_house_lvl3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838615087933094, guid: 01d8db7f314b2504284646720569ebee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4991268262054790, guid: 01d8db7f314b2504284646720569ebee, type: 3}
       propertyPath: m_LocalPosition.x

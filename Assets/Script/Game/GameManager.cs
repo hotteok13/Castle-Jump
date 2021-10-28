@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Traffic_Accident;
     [SerializeField] GameObject Fuel_efficiency_Record;
-
+ 
     public static bool Game_Operation;
     public static GameManager instance;
 
@@ -33,10 +33,11 @@ public class GameManager : MonoBehaviour
 
         Json_Load();
     }
+    
 
     private void Update()
     {
-        if(Game_Operation)
+        if (Game_Operation)
         {
             Fuel_efficiency_Record.SetActive(true);
             Fuel_efficiency.text = data.kilometer.ToString() + " km";

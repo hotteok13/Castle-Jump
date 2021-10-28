@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Car_Select : MonoBehaviour
 {
-    [SerializeField] GameObject Car;
+    GameObject Car;
 
     private void Start()
     {       
