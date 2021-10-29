@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
         if (!GameManager.Game_Operation) return;
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
-        {  
+        {        
             if (++Line == 3)
                 Line = 2;
         }

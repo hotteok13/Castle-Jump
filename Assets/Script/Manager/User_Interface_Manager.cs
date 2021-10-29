@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -9,6 +8,8 @@ public class User_Interface_Manager : MonoBehaviour
     [SerializeField] GameObject Light;
     [SerializeField] GameObject Profile;
     [SerializeField] GameObject Setting;
+    [SerializeField] GameObject Shop;
+    [SerializeField] GameObject Mission;
 
     public void Play_Game()
      {
@@ -38,10 +39,21 @@ public class User_Interface_Manager : MonoBehaviour
 
     public void Open(string open)
     {
+        Sound_Manager.instance.SFX_Sound("Click");
+
         switch (open)
         {
             case "Setting":
                 Setting.SetActive(true);
+                break;
+            case "Google":
+                Application.OpenURL("https://play.google.com/store/apps/details?id=com.Default.SpaceCats");
+                break;
+            case "Shop":
+                Shop.SetActive(true);
+                break;
+            case "Mission":
+                Mission.SetActive(true);
                 break;
         }
     }
@@ -52,9 +64,14 @@ public class User_Interface_Manager : MonoBehaviour
         {
             case "Setting":
                 Setting.SetActive(false);
-                break;     
+                break;
+            case "Shop":
+                Shop.SetActive(false);
+                break;
+            case "Mission":
+                Mission.SetActive(false);
+                break;
         }
-
     }
 }
 

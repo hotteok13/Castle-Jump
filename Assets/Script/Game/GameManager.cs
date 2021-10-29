@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 {
     Game_Data data = new Game_Data(1);
 
-    [SerializeField] Text Fuel_efficiency;
+    [SerializeField] Text Fuel_efficiency, kilometer;
     [SerializeField] GameObject Traffic_Accident;
     [SerializeField] GameObject Fuel_efficiency_Record;
  
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (Game_Operation)
         {
             Fuel_efficiency_Record.SetActive(true);
-            Fuel_efficiency.text = data.kilometer.ToString() + " km";
+            Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
 
             Traffic_Accident.SetActive(false);
         }
@@ -53,12 +53,15 @@ public class GameManager : MonoBehaviour
 
             Fuel_efficiency_Record.SetActive(false);
         }
+
+        kilometer.text = data.kilometer.ToString() + " / 100 ";
     }
 
     public void vehicle_Km()
     {
         data.kilometer++;
     }
+
 
     public void Json_Save()
     {
