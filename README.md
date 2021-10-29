@@ -7,3 +7,7 @@ SDK Used
 Game Function
  - Volume control.
  - Activation and deactivation according to the location of the obstacle object.
+ - Day and night changes over time with the Invoke function
+
+Resolution
+ - Free Aspect
