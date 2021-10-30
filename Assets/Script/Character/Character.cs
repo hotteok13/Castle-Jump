@@ -6,13 +6,12 @@ public class Character : MonoBehaviour
     public static bool Accident;
     [SerializeField] float Line_Distance; // 두 선 사이의 거리
 
-
     void Update()
     {
         if (!GameManager.Game_Operation) return;
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
-        {        
+        {
             if (++Line == 3)
                 Line = 2;
         }
@@ -39,11 +38,13 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Vehicle"))
+        string material_Name = other.transform.GetComponent<BoxCollider>().material.name;
+
+        if(material_Name == "Dodge (Instance)")
         {
             Accident = true;
             GameManager.Game_Operation = false;
             Sound_Manager.instance.SFX_Sound("Collision");
-        }
+        }    
     }
 }

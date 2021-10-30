@@ -53,8 +53,18 @@ public class GameManager : MonoBehaviour
 
             Fuel_efficiency_Record.SetActive(false);
         }
+    }
 
-        kilometer.text = data.kilometer.ToString() + " / 100 ";
+    public void Quest()
+    {
+        if (data.kilometer >= 100)
+        {
+
+        }
+        else
+        {
+            kilometer.text = data.kilometer.ToString() + " / 100 ";
+        }
     }
 
     public void vehicle_Km()
@@ -66,12 +76,18 @@ public class GameManager : MonoBehaviour
     public void Json_Save()
     {
         string json_data = JsonConvert.SerializeObject(data);
-        File.WriteAllText(Application.dataPath + "/NKStudio.josn",json_data);
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(json_data);
+        string format = System.Convert.ToBase64String(bytes);
+
+        File.WriteAllText(Application.dataPath + "/NKStudio.josn", format);
     }
 
     public void Json_Load()
-    {
+    {   
         string json_data = File.ReadAllText(Application.dataPath + "/NKStudio.josn");
-        data = JsonConvert.DeserializeObject<Game_Data>(json_data);
+        byte[] bytes = System.Convert.FromBase64String(json_data);
+        string reformat = System.Text.Encoding.UTF8.GetString(bytes);
+
+        data = JsonConvert.DeserializeObject<Game_Data>(reformat);
     }
 }

@@ -10,7 +10,6 @@ public class Vehicle_Manager : MonoBehaviour
     List<GameObject> list = new List<GameObject>();
     List<GameObject> Different_list = new List<GameObject>();
 
-
     void Start()
     {
         for (int i = 0; i < 3; i++)
