@@ -1,5 +1,5 @@
 # Game Overview
-- This is a project for learning new Unity skills and taking on new challenges.
+This is a project for learning new Unity skills and taking on new challenges.
 
 Optimization overview
  - The canvas was divided and managed.
