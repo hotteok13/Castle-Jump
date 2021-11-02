@@ -3,21 +3,23 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.UI;
 
-class Game_Data
+public class Game_Data
 {
+    public int Currency;
     public int kilometer;
 
-    public Game_Data(int current_kilometer)
-    {
-        kilometer = current_kilometer;
-    }
+    //public Game_Data(int current_kilometer,int currnet_Curreny)
+    //{
+    //    Currency = currnet_Curreny;
+    //    kilometer = current_kilometer;
+    //}
 }
 
 public class GameManager : MonoBehaviour
 {
-    Game_Data data = new Game_Data(1);
+    Game_Data data = new Game_Data();
 
-    [SerializeField] Text Fuel_efficiency, kilometer;
+    [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Traffic_Accident;
     [SerializeField] GameObject Fuel_efficiency_Record;
  
@@ -55,21 +57,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Quest()
-    {
-        if (data.kilometer >= 100)
-        {
-
-        }
-        else
-        {
-            kilometer.text = data.kilometer.ToString() + " / 100 ";
-        }
-    }
 
     public void vehicle_Km()
     {
         data.kilometer++;
+    }
+
+    public void Quest_Currecny(int Reward)
+    {
+        data.Currency += Reward;
     }
 
 
