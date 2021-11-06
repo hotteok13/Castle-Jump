@@ -6,7 +6,7 @@ public class Object_Pool : MonoBehaviour
 {
     public static Object_Pool Queue_Pool;
 
-    public GameObject Prefab = null;
+    public GameObject [] Prefab = null;
 
     [SerializeField] Queue<GameObject> m_queue = new Queue<GameObject>();
 
@@ -16,9 +16,13 @@ public class Object_Pool : MonoBehaviour
 
         for(int i = 0; i < 10; i++) // 10개의 객체를 미리 생성합니다.
         {
-            GameObject t_object = Instantiate(Prefab, Vector3.zero, Quaternion.identity);
+            GameObject t_object = Instantiate(Prefab[0], Vector3.zero, Quaternion.identity);
             m_queue.Enqueue(t_object);
             t_object.SetActive(false);
+
+            GameObject t_object_one = Instantiate(Prefab[1], Vector3.zero, Quaternion.identity);
+            m_queue.Enqueue(t_object_one);
+            t_object_one.SetActive(false);
         }
     }
 

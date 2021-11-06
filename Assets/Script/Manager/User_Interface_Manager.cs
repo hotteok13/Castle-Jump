@@ -7,6 +7,7 @@ public class User_Interface_Manager : MonoBehaviour
     [SerializeField] GameObject Setting;
     [SerializeField] GameObject Shop;
     [SerializeField] GameObject Mission;
+    [SerializeField] GameObject Stage;
 
     public void Play_Game()
      {
@@ -16,7 +17,7 @@ public class User_Interface_Manager : MonoBehaviour
 
     public void Retry()
     {
-        Character.Accident = false;
+       Character.Accident = false;
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
      }
 
@@ -29,8 +30,8 @@ public class User_Interface_Manager : MonoBehaviour
             case "Setting":
                 Setting.SetActive(true);
                 break;
-            case "Google":
-                Application.OpenURL("https://play.google.com/store/apps/details?id=com.Default.SpaceCats");
+            case "Stage":
+                Stage.SetActive(true);
                 break;
             case "Shop":
                 Shop.SetActive(true);
@@ -47,6 +48,9 @@ public class User_Interface_Manager : MonoBehaviour
         {
             case "Setting":
                 Setting.SetActive(false);
+                break;
+            case "Stage":
+                Stage.SetActive(false);
                 break;
             case "Shop":
                 Shop.SetActive(false);

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Create_Object : MonoBehaviour
 {
@@ -9,9 +7,8 @@ public class Create_Object : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        int A = Random.Range(1, 10);
 
-        if (time >= A)
+        if (time >= Random.Range(1, 1000))
         {
             Create();
             time = 0.0f;
@@ -28,13 +25,13 @@ public class Create_Object : MonoBehaviour
         switch (Rand)
         {
             case 0:
-                t_object.transform.position = new Vector3(-60, 0, 300);
+                t_object.transform.position = new Vector3(-60, 0, 350);
                 break;
             case 1:
-                t_object.transform.position = new Vector3(0, 0, 300);
+                t_object.transform.position = new Vector3(0, 0, 350);
                 break;
             case 2:
-                t_object.transform.position = new Vector3(60, 0, 300);
+                t_object.transform.position = new Vector3(60, 0, 350);
                 break;
         }
     }

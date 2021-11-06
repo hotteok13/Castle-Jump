@@ -5,8 +5,8 @@ using UnityEditor;
 public class Road_Manager : MonoBehaviour
 {
     [SerializeField] float speed = 200;
-    [SerializeField] GameObject Road;
 
+    GameObject Road;
     List<GameObject> Road_List;
 
     Vector3 Next_Road = Vector3.zero;
@@ -15,6 +15,8 @@ public class Road_Manager : MonoBehaviour
 
     private void Start()
     {
+        Road_State();
+
         Road_List = new List<GameObject>();
         Sound_Manager.instance.BGM_Sound("Royalty");
 
@@ -28,10 +30,22 @@ public class Road_Manager : MonoBehaviour
     private void Update()
     {
         if (!GameManager.Game_Operation) return;
-
         Move_Road();
     }
 
+
+    void Road_State()
+    {
+        switch (GameManager.Road_Count)
+        {
+            case 0:
+                Road = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/First Road.prefab", typeof(GameObject));
+                break;
+            case 1:
+                Road = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Second Road.prefab", typeof(GameObject));
+                break;
+        }
+    }
 
     void Move_Road()
     {

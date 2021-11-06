@@ -7,12 +7,6 @@ public class Game_Data
 {
     public int Currency;
     public int kilometer;
-
-    //public Game_Data(int current_kilometer,int currnet_Curreny)
-    //{
-    //    Currency = currnet_Curreny;
-    //    kilometer = current_kilometer;
-    //}
 }
 
 public class GameManager : MonoBehaviour
@@ -22,7 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Traffic_Accident;
     [SerializeField] GameObject Fuel_efficiency_Record;
- 
+
+    public static int Road_Count;
     public static bool Game_Operation;
     public static GameManager instance;
 
@@ -33,7 +28,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        Json_Load();
+        Json_Load();       
     }
     
 
@@ -57,10 +52,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void vehicle_Km()
     {
         data.kilometer++;
+
+        if (data.kilometer >= 10)
+        {
+            Debug.Log("냥");
+            Road_Count = 1;
+        }
     }
 
     public void Quest_Currecny(int Reward)
