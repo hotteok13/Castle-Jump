@@ -19,7 +19,16 @@ public class User_Interface_Manager : MonoBehaviour
     {
        Character.Accident = false;
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-     }
+    }
+
+    public void Next_Road()
+    {
+        GameManager.Arrival *= 2;
+        GameManager.Road_Count++;
+        Debug.Log(GameManager.Road_Count);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 
     public void Open(string open)
     {

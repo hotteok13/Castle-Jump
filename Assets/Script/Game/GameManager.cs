@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     Game_Data data = new Game_Data();
 
     [SerializeField] Text Fuel_efficiency;
+    [SerializeField] GameObject Stage_Window;
     [SerializeField] GameObject Traffic_Accident;
     [SerializeField] GameObject Fuel_efficiency_Record;
 
+    public static int Arrival = 50;
     public static int Road_Count;
     public static bool Game_Operation;
     public static GameManager instance;
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        Json_Load();       
+        Json_Load();
     }
     
 
@@ -36,6 +38,15 @@ public class GameManager : MonoBehaviour
     {
         if (Game_Operation)
         {
+            if (data.kilometer >= Arrival)
+            {
+                Debug.Log(data.kilometer);
+
+                Game_Operation = false;
+                Stage_Window.SetActive(true);
+
+            }
+
             Fuel_efficiency_Record.SetActive(true);
             Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
 
@@ -55,12 +66,6 @@ public class GameManager : MonoBehaviour
     public void vehicle_Km()
     {
         data.kilometer++;
-
-        if (data.kilometer >= 10)
-        {
-            Debug.Log("냥");
-            Road_Count = 1;
-        }
     }
 
     public void Quest_Currecny(int Reward)
