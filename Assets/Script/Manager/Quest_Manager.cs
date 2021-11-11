@@ -27,10 +27,10 @@ public class Quest_Manager : MonoBehaviour
     
     private void Start()
     {
-        quest_data.Add(1, new Quest("Drive at least 100 km/L.", 1000));
-        quest_data.Add(2, new Quest("Drive at least 150 km/L.", 1250));
-        quest_data.Add(3, new Quest("Drive at least 100 km/L.", 1500));
-        quest_data.Add(4, new Quest("Drive at least 100 km/L.", 1750));
+        quest_data.Add(1, new Quest("Drive at least 75 km/L.", 1000));
+        quest_data.Add(2, new Quest("Collect more than $ 10", 2000));
+        quest_data.Add(3, new Quest("Buy a detection sensor.", 3000));
+        quest_data.Add(4, new Quest("Arrive at your final destination.", 4000));
 
         Quest_List();
     }

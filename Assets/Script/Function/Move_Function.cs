@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Move_Function : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class Move_Function : MonoBehaviour
     {
         if (!GameManager.Game_Operation) return;
 
-        transform.Translate(-transform.forward * 100 * Time.deltaTime);
+        transform.Translate(-transform.forward * GameManager.Speed / 2 * Time.deltaTime);
 
        if (transform.position.z <= -200)
        {

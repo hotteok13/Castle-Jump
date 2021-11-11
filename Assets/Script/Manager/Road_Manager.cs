@@ -4,7 +4,7 @@ using UnityEditor;
 
 public class Road_Manager : MonoBehaviour
 {
-    [SerializeField] float speed = 200;
+    [SerializeField] RectTransform Position;
 
     GameObject Road;
     List<GameObject> Road_List;
@@ -18,7 +18,6 @@ public class Road_Manager : MonoBehaviour
         Road_State();
 
         Road_List = new List<GameObject>();
-        Sound_Manager.instance.BGM_Sound("Royalty");
 
         for (int i = 0; i < 3; i++)
         {
@@ -30,6 +29,7 @@ public class Road_Manager : MonoBehaviour
     private void Update()
     {
         if (!GameManager.Game_Operation) return;
+
         Move_Road();
     }
 
@@ -39,10 +39,27 @@ public class Road_Manager : MonoBehaviour
         switch (GameManager.Road_Count)
         {
             case 0:
+                Sound_Manager.instance.BGM_Sound("Royalty");
                 Road = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/First Road.prefab", typeof(GameObject));
+                GameManager.Rate = 1000;
                 break;
             case 1:
+                Sound_Manager.instance.BGM_Sound("Presentations");
                 Road = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Second Road.prefab", typeof(GameObject));
+                Position.anchoredPosition = new Vector3(150, 175, 0);
+                GameManager.Rate = 500;
+                break;
+            case 2:
+                Sound_Manager.instance.BGM_Sound("Powerful");
+                Road = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Three Road.prefab", typeof(GameObject));
+                Position.anchoredPosition = new Vector3(125, 150, 0);
+                GameManager.Rate = 100;
+                break;
+            case 3:
+                Sound_Manager.instance.BGM_Sound("Instrumental");
+                Road = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Four Road.prefab", typeof(GameObject));
+                Position.anchoredPosition = new Vector3(100, 125, 0);
+                GameManager.Rate = 50;
                 break;
         }
     }
@@ -51,7 +68,7 @@ public class Road_Manager : MonoBehaviour
     {
         for(int i = 0; i < Road_List.Count; i++)
         {
-            Road_List[i].transform.Translate(-transform.forward * speed * Time.deltaTime);
+            Road_List[i].transform.Translate(-transform.forward * GameManager.Speed * Time.deltaTime);
         }
 
         if(Road_List[Last_Road].transform.position.z <= -200)

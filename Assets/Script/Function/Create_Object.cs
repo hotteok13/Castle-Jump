@@ -8,7 +8,7 @@ public class Create_Object : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if (time >= Random.Range(1, 1000))
+        if (time >= Random.Range(1, GameManager.Rate))
         {
             Create();
             time = 0.0f;
