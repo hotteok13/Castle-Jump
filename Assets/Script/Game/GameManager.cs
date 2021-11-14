@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
                 Stage_Window.SetActive(true);
             }
 
+            if (Speed >= 400)
+            {
+                Speed = 400;
+            }
+
             Fuel_efficiency_Record.SetActive(true);
             Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
 
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void vehicle_Km()
     {
-        Speed += 5;
+        Speed += 5; 
         data.kilometer++;
         data.Currency += 10;
     }
