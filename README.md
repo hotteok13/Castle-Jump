@@ -9,6 +9,10 @@ The difficulty level is set according to each city, and you can get rewards by c
 ***SDK Used***
  - Newtonsoft JSON
 
+***Game Sound***
+ - Create a sound class, set audio clips and string variables, and then create an array to output sound when the parameters of the function that actually output the sound and the
+   string variable of the sound class match.
+
 ***Game Function***
  - I set it to be able to control the volume.
  - Using json, data was stored and managed.
