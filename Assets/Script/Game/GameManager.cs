@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour
         {
             if (data.kilometer >= Arrival)
             {
-                Road_Count++;
                 Game_Operation = false;
                 Stage_Window.SetActive(true);
+                Sound_Manager.instance.SFX_Sound("Applause");
             }
 
             if (Speed >= 400)
@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
     {
         data.Currency += Reward;
     }
-
 
     public void Json_Save()
     {

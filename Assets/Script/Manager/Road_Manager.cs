@@ -33,7 +33,6 @@ public class Road_Manager : MonoBehaviour
         Move_Road();
     }
 
-
     void Road_State()
     {
         switch (GameManager.Road_Count)

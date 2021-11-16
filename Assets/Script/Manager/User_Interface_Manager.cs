@@ -23,6 +23,7 @@ public class User_Interface_Manager : MonoBehaviour
 
     public void Next_Road()
     {
+        GameManager.Road_Count++;
         GameManager.Arrival *= 2;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
