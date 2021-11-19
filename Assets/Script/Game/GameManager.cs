@@ -9,6 +9,7 @@ public class Game_Data
     public int kilometer;
 }
 
+
 public class GameManager : MonoBehaviour
 {
     Game_Data data = new Game_Data();
@@ -16,7 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text Money;
     [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Stage_Window;
-    [SerializeField] GameObject Traffic_Accident;
     [SerializeField] GameObject Fuel_efficiency_Record;
 
     public static int Rate;
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public static int Arrival = 50;
     public static int Road_Count;
     public static bool Game_Operation;
+    public static bool Sensor_Activation;
+
     public static GameManager instance;
 
     private void Awake()
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         if (Game_Operation)
         {
+
             if (data.kilometer >= Arrival)
             {
                 Game_Operation = false;
@@ -55,16 +58,9 @@ public class GameManager : MonoBehaviour
 
             Fuel_efficiency_Record.SetActive(true);
             Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
-
-            Traffic_Accident.SetActive(false);
         }
         else
         {
-            if (Character.Accident)
-            {
-                Traffic_Accident.SetActive(true);
-            }
-
             Money.text = data.Currency.ToString();
             Fuel_efficiency_Record.SetActive(false);
         }

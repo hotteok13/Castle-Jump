@@ -17,7 +17,6 @@ public class User_Interface_Manager : MonoBehaviour
 
     public void Retry()
     {
-       Character.Accident = false;
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

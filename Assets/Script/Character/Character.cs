@@ -3,8 +3,8 @@
 public class Character : MonoBehaviour
 {
     int Line = 1; // 0 : Left, 1 : Middle, 2 : Right
-    public static bool Accident;
     [SerializeField] float Line_Distance; // 두 선 사이의 거리
+    [SerializeField] GameObject Traffic_Accident;
 
     void Update()
     {
@@ -42,7 +42,7 @@ public class Character : MonoBehaviour
 
         if(material_Name == "Dodge (Instance)")
         {
-            Accident = true;
+            Traffic_Accident.SetActive(true);
             GameManager.Game_Operation = false;
             Sound_Manager.instance.SFX_Sound("Collision");
         }    
