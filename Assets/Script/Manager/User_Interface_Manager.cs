@@ -10,9 +10,9 @@ public class User_Interface_Manager : MonoBehaviour
     [SerializeField] GameObject Stage;
 
     public void Play_Game()
-     {
-        Profile.SetActive(false);
-        GameManager.Game_Operation = true;
+    {
+        Time.timeScale = 1f;
+        Profile.SetActive(false);    
     }
 
     public void Retry()

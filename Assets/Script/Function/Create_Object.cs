@@ -17,8 +17,6 @@ public class Create_Object : MonoBehaviour
 
     void Create()
     {
-        if (!GameManager.Game_Operation) return;
-
         int Rand = Random.Range(0,3);
         GameObject t_object = Object_Pool.Queue_Pool.Get_Queue();
 

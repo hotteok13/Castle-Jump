@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text Money;
     [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Stage_Window;
+    [SerializeField] Button [] Purchase_Button;
     [SerializeField] GameObject Fuel_efficiency_Record;
 
     public static int Rate;
     public static int Speed = 200;
     public static int Arrival = 50;
     public static int Road_Count;
-    public static bool Game_Operation;
     public static bool Sensor_Activation;
 
     public static GameManager instance;
@@ -37,33 +37,27 @@ public class GameManager : MonoBehaviour
 
         Speed = 200;
         Json_Load();
+
+        Time.timeScale = 0f;
     }
     
     private void Update()
     {
-        if (Game_Operation)
+        if (data.kilometer >= Arrival)
         {
-
-            if (data.kilometer >= Arrival)
-            {
-                Game_Operation = false;
-                Stage_Window.SetActive(true);
-                Sound_Manager.instance.SFX_Sound("Applause");
-            }
-
-            if (Speed >= 400)
-            {
-                Speed = 400;
-            }
-
-            Fuel_efficiency_Record.SetActive(true);
-            Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
+            Stage_Window.SetActive(true);
+            Time.timeScale = 0f;
         }
-        else
+
+        if (Speed >= 400)
         {
-            Money.text = data.Currency.ToString();
-            Fuel_efficiency_Record.SetActive(false);
+            Speed = 400;
         }
+
+        Fuel_efficiency_Record.SetActive(true);
+        Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
+
+        Money.text = data.Currency.ToString();
     }
 
     public void vehicle_Km()
@@ -76,6 +70,41 @@ public class GameManager : MonoBehaviour
     public void Quest_Currecny(int Reward)
     {
         data.Currency += Reward;
+    }
+
+    public void Purchase_System(int purchase)
+    {
+        data.Currency -= purchase;      
+    }
+
+    public void purchase_Active(int Sensor, int Wiper, int Headlight)
+    {
+        if (data.Currency < Sensor)
+        {
+            Purchase_Button[0].interactable = false;
+        }
+        else if(data.Currency >= Sensor)
+        {
+            Purchase_Button[0].interactable = true;
+        }
+
+        if (data.Currency < Wiper)
+        {
+            Purchase_Button[1].interactable = false;
+        }
+        else if (data.Currency >= Wiper)
+        {
+            Purchase_Button[1].interactable = true;
+        }
+
+        if (data.Currency < Headlight)
+        {
+            Purchase_Button[2].interactable = false;
+        }
+        else if (data.Currency >= Headlight)
+        {
+            Purchase_Button[2].interactable = true;
+        }
     }
 
     public void Json_Save()

@@ -8,8 +8,6 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Game_Operation) return;
-
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (++Line == 3)
@@ -43,8 +41,9 @@ public class Character : MonoBehaviour
         if(material_Name == "Dodge (Instance)")
         {
             Traffic_Accident.SetActive(true);
-            GameManager.Game_Operation = false;
             Sound_Manager.instance.SFX_Sound("Collision");
-        }    
+
+            Time.timeScale = 0f;
+        }
     }
 }

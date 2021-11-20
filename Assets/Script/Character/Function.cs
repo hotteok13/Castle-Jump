@@ -9,7 +9,6 @@ public class Function : MonoBehaviour
     private void Start()
     {
         color = sensor.GetComponent<Image>().color;
-  
     }
 
     void Update()

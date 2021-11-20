@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Item
 {
     public Sprite Part;
+    public int Purchase;
     public string Price;
 }
 
@@ -25,5 +26,9 @@ public class Item_Manager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        GameManager.instance.purchase_Active(item[0].Purchase, item[1].Purchase, item[2].Purchase);
+    }
 
 }

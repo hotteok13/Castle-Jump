@@ -28,8 +28,6 @@ public class Road_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Game_Operation) return;
-
         Move_Road();
     }
 
