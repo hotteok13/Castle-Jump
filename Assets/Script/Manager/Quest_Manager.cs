@@ -17,8 +17,6 @@ public class Quest
 
 public class Quest_Manager : MonoBehaviour
 {
-    static int Count = 0;
-
     Dictionary<int, Quest> quest_data = new Dictionary<int, Quest>();
 
     [SerializeField] Text Quest_Currency;
@@ -28,7 +26,7 @@ public class Quest_Manager : MonoBehaviour
     {
         quest_data.Add(1, new Quest("Combine left and right movements 10 times.", 1000));
         quest_data.Add(2, new Quest("Buy a detection sensor.", 2000));
-        quest_data.Add(3, new Quest("Use the wiper function.", 3000));
+        quest_data.Add(3, new Quest("Try driving at a speed of up to 350 km / h or higher.", 3000));
         quest_data.Add(4, new Quest("You have completed all quests. Drive safely to your final destination.", 0));
 
         Quest_List();
@@ -36,7 +34,7 @@ public class Quest_Manager : MonoBehaviour
 
     void Quest_List()
     {
-        switch(Count)
+        switch(GameManager.Quest_Count)
         {
             case 0:
                 Quest_Explanation.text = quest_data[1].Explanation;
