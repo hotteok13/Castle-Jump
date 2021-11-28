@@ -22,6 +22,7 @@ The difficulty level is set according to each city, and you can get rewards by c
  - Colliders are judged based on the material name of the collider.
  - It is designed to iteratively move the map using an algorithm that recycles three maps.
  - The left and right movement of the car is designed to look natural using linear interpolation.
+ - Time.timescale separates game overs and game runs.
 
 ***Design Pattern***
  - Singleton
