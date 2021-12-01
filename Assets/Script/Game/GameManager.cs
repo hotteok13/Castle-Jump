@@ -7,6 +7,9 @@ public class Game_Data
 {
     public int Currency;
     public int kilometer;
+    public bool Sensor_Gain;
+    public bool Wiper_Gain;
+    public bool Headlight_Gain;
 }
 
 
@@ -18,7 +21,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Stage_Window;
     [SerializeField] Button [] Purchase_Button;
-    [SerializeField] GameObject Fuel_efficiency_Record;
 
     public static int Quest_Count = 0; 
     public static int Rate;
@@ -63,7 +65,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Fuel_efficiency_Record.SetActive(true);
         Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
 
         Money.text = data.Currency.ToString();
@@ -84,17 +85,21 @@ public class GameManager : MonoBehaviour
     public void Sensor_Purchase()
     {
         Quest_Count++;
-        data.Currency -= 2000;       
+        data.Currency -= 2000;
+        Sensor_Activation = data.Sensor_Gain = true;
+        Purchase_Button[0].gameObject.SetActive(false);
     }
 
     public void Wiper_Purchase()
     {
         data.Currency -= 3500;
+        Purchase_Button[1].gameObject.SetActive(false);
     }
 
     public void Headlight_Purchase()
     {
         data.Currency -= 5000;
+        Purchase_Button[2].gameObject.SetActive(false);
     }
 
     public void purchase_Active(int Sensor, int Wiper, int Headlight)

@@ -1261,6 +1261,7 @@ MonoBehaviour:
   Shop: {fileID: 2085257020}
   Mission: {fileID: 1096756686}
   Stage: {fileID: 1728494144}
+  Fuel_efficiency_Record: {fileID: 1282700129}
 --- !u!4 &211378794
 Transform:
   m_ObjectHideFlags: 0
@@ -1769,7 +1770,6 @@ MonoBehaviour:
   - {fileID: 1320090550}
   - {fileID: 1399804893}
   - {fileID: 1455320619}
-  Fuel_efficiency_Record: {fileID: 1282700129}
 --- !u!4 &515413456
 Transform:
   m_ObjectHideFlags: 0

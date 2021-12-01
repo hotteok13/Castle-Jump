@@ -8,11 +8,13 @@ public class User_Interface_Manager : MonoBehaviour
     [SerializeField] GameObject Shop;
     [SerializeField] GameObject Mission;
     [SerializeField] GameObject Stage;
+    [SerializeField] GameObject Fuel_efficiency_Record;
 
     public void Play_Game()
     {
         Time.timeScale = 1f;
-        Profile.SetActive(false);    
+        Profile.SetActive(false);
+        Fuel_efficiency_Record.SetActive(true);
     }
 
     public void Retry()

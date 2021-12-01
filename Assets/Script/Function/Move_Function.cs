@@ -9,7 +9,6 @@ public class Move_Function : MonoBehaviour
        if (transform.position.z <= -200)
        {
             Object_Pool.Queue_Pool.Insert_Queue(gameObject);
-       }
-        
+       }        
     }
 }
