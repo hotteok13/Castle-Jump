@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class Game_Data
 {
+    public float time;
     public int Currency;
     public int kilometer;
     public bool Sensor_Gain;
     public bool Wiper_Gain;
     public bool Headlight_Gain;
 }
-
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text Fuel_efficiency;
     [SerializeField] GameObject Stage_Window;
     [SerializeField] Button [] Purchase_Button;
+    [SerializeField] GameObject Direction_Light;
 
     public static int Quest_Count = 0; 
     public static int Rate;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     public static int Arrival = 50;
     public static int Road_Count;
     public static bool Sensor_Activation;
+    public static bool Headlight_Activation;
 
     public static GameManager instance;
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         Json_Load();
 
         Time.timeScale = 0f;
+
     }
     
     private void Update()
@@ -51,6 +54,9 @@ public class GameManager : MonoBehaviour
             Stage_Window.SetActive(true);
             Time.timeScale = 0f;
         }
+
+        data.time += Time.deltaTime;
+        Night_and_Day();
 
         if (Speed >= 400)
         {
@@ -68,6 +74,21 @@ public class GameManager : MonoBehaviour
         Fuel_efficiency.text = data.kilometer.ToString() + " km/L";
 
         Money.text = data.Currency.ToString();
+    }
+
+    public void Night_and_Day()
+    {
+        if(data.time <= 30)
+        {
+            Direction_Light.SetActive(true);
+        }
+        else if(data.time >= 30)
+        {
+            Direction_Light.SetActive(false);
+        }
+
+        Debug.Log(data.time);
+        data.time = data.time > 60 ? 0 : data.time;
     }
 
     public void vehicle_Km()
@@ -100,6 +121,7 @@ public class GameManager : MonoBehaviour
     {
         data.Currency -= 5000;
         Purchase_Button[2].gameObject.SetActive(false);
+        Headlight_Activation = data.Headlight_Gain = true;
     }
 
     public void purchase_Active(int Sensor, int Wiper, int Headlight)
