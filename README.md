@@ -23,6 +23,8 @@ The difficulty level is set according to each city, and you can get rewards by c
  - It is designed to iteratively move the map using an algorithm that recycles three maps.
  - The left and right movement of the car is designed to look natural using linear interpolation.
  - Time.timescale separates game overs and game runs.
+ - We implemented a car detection sensor using Raycast.
+ - Two spotlights were attached to the car object to implement a car headlight.
 
 ***Design Pattern***
  - Singleton
