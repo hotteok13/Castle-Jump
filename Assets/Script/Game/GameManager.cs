@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
             Direction_Light.SetActive(false);
         }
 
-        Debug.Log(data.time);
         data.time = data.time > 60 ? 0 : data.time;
     }
 
