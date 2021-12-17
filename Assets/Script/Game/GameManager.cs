@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public static int Road_Count;
     public static bool Sensor_Activation;
     public static bool Headlight_Activation;
+    public static bool Navigation_Activation;
 
     public static GameManager instance;
 
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+
+        data.kilometer = 0;
         if (data.kilometer >= Arrival)
         {
             Stage_Window.SetActive(true);
@@ -110,9 +113,10 @@ public class GameManager : MonoBehaviour
         Purchase_Button[0].gameObject.SetActive(false);
     }
 
-    public void Wiper_Purchase()
+    public void Navigation_Purchase()
     {
         data.Currency -= 3500;
+        Navigation_Activation = true;
         Purchase_Button[1].gameObject.SetActive(false);
     }
 
@@ -123,7 +127,7 @@ public class GameManager : MonoBehaviour
         Headlight_Activation = data.Headlight_Gain = true;
     }
 
-    public void purchase_Active(int Sensor, int Wiper, int Headlight)
+    public void purchase_Active(int Sensor, int Navigation, int Headlight)
     {
         if (data.Currency < Sensor)
         {
@@ -134,11 +138,11 @@ public class GameManager : MonoBehaviour
             Purchase_Button[0].interactable = true;
         }
 
-        if (data.Currency < Wiper)
+        if (data.Currency < Navigation)
         {
             Purchase_Button[1].interactable = false;
         }
-        else if (data.Currency >= Wiper)
+        else if (data.Currency >= Navigation)
         {
             Purchase_Button[1].interactable = true;
         }

@@ -6,6 +6,8 @@ public class Function : MonoBehaviour
     Color color;
     [SerializeField] Image sensor;
     [SerializeField] GameObject head_Light;
+    [SerializeField] GameObject navigation;
+
     int headlight_condition;
 
     private void Start()
@@ -17,6 +19,7 @@ public class Function : MonoBehaviour
     {      
         Sensor(GameManager.Sensor_Activation);
         Headlight(GameManager.Headlight_Activation);
+        Navigation(GameManager.Navigation_Activation);
     }
 
     void Sensor(bool Activation)
@@ -24,6 +27,7 @@ public class Function : MonoBehaviour
         if (Activation)
         {
             var ray = new Ray(this.transform.position, this.transform.forward);
+
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100))
@@ -38,6 +42,25 @@ public class Function : MonoBehaviour
             {
                 sensor.color = Color.clear;
             }
+        }
+    }
+
+    void Navigation(bool Activation)
+    {
+        if(Activation)
+        {
+            if(Time.timeScale == 1f)
+            {
+                navigation.SetActive(true);
+            }
+            else
+            {
+                navigation.SetActive(false);
+            }
+        }
+        else
+        {
+            navigation.SetActive(false);
         }
     }
 
