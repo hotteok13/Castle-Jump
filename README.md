@@ -25,6 +25,7 @@ The difficulty level is set according to each city, and you can get rewards by c
  - Time.timescale separates game overs and game runs.
  - We implemented a car detection sensor using Raycast.
  - Two spotlights were attached to the car object to implement a car headlight.
+ - After making another camera, I implemented navigation using render texture.
 
 ***Design Pattern***
  - Singleton
