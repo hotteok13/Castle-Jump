@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private SpriteRenderer enemySprite;
+
+    private Material enemyMaterial;
+    [SerializeField] Material flash;
+
+    private void Start()
+    {
+        enemySprite = GetComponent<SpriteRenderer>();
+
+        enemyMaterial = enemySprite.material;
+
+        flash = new Material(flash);
+    }
+
     void Update()
     {
         transform.Translate(Vector3.down * Time.deltaTime);
@@ -11,6 +25,11 @@ public class Enemy : MonoBehaviour
         if(transform.position.y <= -4.5f)
         {
             Destroy(gameObject);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(nameof(Damage));
         }
     }
 
@@ -29,5 +48,15 @@ public class Enemy : MonoBehaviour
                transform.position, // 생성되는 게임 오브젝트의 위치 
                Quaternion.identity // Quaternion.identity : 회전을 하지 않겠다는 의미입니다.
             );
+    }
+
+    private IEnumerator Damage()
+    {
+        enemySprite.material = flash;
+        flash.color = new Color(1, 1, 1, 0.5f);
+
+        yield return new WaitForSeconds(0.05f);
+
+        enemySprite.material = enemyMaterial;
     }
 }

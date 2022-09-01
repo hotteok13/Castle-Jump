@@ -1,18 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Controller : MonoBehaviour
 {
     [SerializeField] float speed = 1.0f;
     [SerializeField] Transform centerMuzzle;
 
+    // 메모리 풀로 사용할 게임 오브젝트
+    [SerializeField] Bullet lazerPrefab;
+
+    // 메모리 풀로 사용할 클래스
+    private IObjectPool<Bullet> lazerPool;
+
+    private void Awake()
+    {
+        // 1. 게임 오브젝트를 생성하는 함수
+        // 2. 게임 오브젝트를 활성화하는 함수
+        // 3. 게임 오브젝트를 비활성화하는 함수
+        // 4. 게임 오브젝트를 파괴하는 함수
+        // 5. maxSize 메모리에 저장하고 싶은 갯수
+        lazerPool = new ObjectPool<Bullet>
+        (
+             LazerCreate,
+             LazerGet,
+             ReleaseLazer,
+             DestroyLazer,
+             maxSize : 20
+        );
+    }
+
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        InvokeRepeating(nameof(LayerCreate), 0, 0.1f);
+        InvokeRepeating(nameof(InfiniteLazer), 0, 0.1f);
+    }
+
+    public void InfiniteLazer()
+    {
+        var bullet = lazerPool.Get();
+        bullet.transform.position = centerMuzzle.transform.position;
     }
 
     void Update()
@@ -33,15 +61,31 @@ public class Controller : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(position);
     }
 
-    public void LayerCreate()
+    // 게임 오브젝트를 생성하는 함수
+    public Bullet LazerCreate()
     {
-        Instantiate
-        (
-            Resources.Load<GameObject>("Lazer"),
-            centerMuzzle.position,
-            Quaternion.identity
-        );
+        Bullet bullet = Instantiate(lazerPrefab).GetComponent<Bullet>();
+        bullet.SetPool(lazerPool);
+        return bullet;
     }
 
-    
+    // Get이 실행될 때 실행되는 함수
+    // 게임 오브젝트를 활성화하는 함수
+    public void LazerGet(Bullet lazer)
+    {
+        lazer.gameObject.SetActive(true);
+    }
+
+    // 게임 오브젝트를 비활성화하는 함수
+    public void ReleaseLazer(Bullet lazer)
+    {
+        lazer.gameObject.SetActive(false);
+    }
+
+    // 게임 오브젝트를 파괴하는 함수
+    public void DestroyLazer(Bullet lazer)
+    {
+        Destroy(lazer.gameObject);
+    }
+
 }
