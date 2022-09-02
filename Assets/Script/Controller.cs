@@ -40,6 +40,7 @@ public class Controller : MonoBehaviour
     public void InfiniteLazer()
     {
         var bullet = lazerPool.Get();
+        SoundManager.instance.SoundStart(0);
         bullet.transform.position = centerMuzzle.transform.position;
     }
 
