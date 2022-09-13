@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
 
     public int score;
 
-    void Start()
+    private void Awake()
     {
+        //Start 함수 이전에 시작이 된다
+        
         // 게임 데이터를 게임이 시작할 때 불러옵니다.
         Load();
 
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
+    
 
     public void Save()
     {

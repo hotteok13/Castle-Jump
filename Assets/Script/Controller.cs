@@ -31,8 +31,7 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        
 
         InvokeRepeating(nameof(InfiniteLazer), 0, 0.1f);
     }
