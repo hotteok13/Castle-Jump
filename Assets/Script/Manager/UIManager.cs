@@ -20,7 +20,11 @@ public class UIManager : MonoBehaviour
     public void GameStart(GameObject mainMenu)
     {
         mainMenu.SetActive(false);
+
+        GameManager.instance.state = true;
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        //Time.unscaledDeltaTime : Time Scale의 영향을 받지 않는 시간
     }
 }

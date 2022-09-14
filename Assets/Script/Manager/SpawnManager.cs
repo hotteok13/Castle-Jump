@@ -19,6 +19,8 @@ public class SpawnManager : MonoBehaviour
     // 게임 오브젝트(Enemy)를 생성하는 함수
     public void CreateInfinite()
     {
+        if (GameManager.instance.state == false) return;
+
         Instantiate
         (
             Resources.Load<GameObject>("Enemy"),

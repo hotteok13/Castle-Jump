@@ -38,6 +38,7 @@ public class Controller : MonoBehaviour
 
     public void InfiniteLazer()
     {
+        if (GameManager.instance.state == false) return;
         var bullet = lazerPool.Get();
         SoundManager.instance.SoundStart(0);
         bullet.transform.position = centerMuzzle.transform.position;
@@ -45,6 +46,7 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.state == false) return;
         float x = Input.GetAxis("Mouse X");
 
         Vector3 direction = new Vector3( x, 0, 0);
@@ -64,6 +66,8 @@ public class Controller : MonoBehaviour
     // 게임 오브젝트를 생성하는 함수
     public Bullet LazerCreate()
     {
+        
+
         Bullet bullet = Instantiate(lazerPrefab).GetComponent<Bullet>();
         bullet.SetPool(lazerPool);
         return bullet;

@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] AudioClip [ ] audioClip; 
 
-    void Start()
+    void Awake()
     {
         if(instance == null)
         {

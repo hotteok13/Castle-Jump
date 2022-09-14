@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] int health = 100;
     [SerializeField] Material flash;
+    [SerializeField] GameObject effect;
+
 
     private void Start()
     {
@@ -22,11 +24,15 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.state == false) return;
         transform.Translate(Vector3.down * Time.deltaTime);
 
         if(transform.position.y <= -4.5f || health <= 0)
         {
-            Destroy(gameObject);
+            //effect가 활성화 되어 파티클이 보이도록 설정
+            effect.gameObject.SetActive(true);
+            // Enemy 오브젝트가 0.5초 뒤에 파괴
+            Destroy(gameObject,0.5f);
         }
     }
 
@@ -58,12 +64,12 @@ public class Enemy : MonoBehaviour
 
         SoundManager.instance.SoundStart(1);
 
-        Instantiate
-        (
-            Resources.Load<GameObject>("Explosion"), // 생성하고 싶은 게임 오브젝트
-            transform.position, // 생성되는 게임 오브젝트의 위치 
-            Quaternion.identity // Quaternion.identity : 회전을 하지 않겠다는 의미입니다.
-        );
+        
+        
+        
+        
+        
+        
     }
 
     private IEnumerator Damage()
