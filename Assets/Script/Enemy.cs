@@ -57,8 +57,8 @@ public class Enemy : MonoBehaviour
     // 게임 오브젝트가 파괴되었을 때 호출되는 함수
     private void OnDestroy()
     {
-        GameManager.instance.score += 100;
-
+        GameManager.instance.score += 1;
+        GameManager.instance.money += 100;
         // 게임 데이터를 저장합니다.
         GameManager.instance.Save();
 

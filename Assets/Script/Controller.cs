@@ -5,6 +5,7 @@ public class Controller : MonoBehaviour
 {
     [SerializeField] float speed = 1.0f;
     [SerializeField] Transform centerMuzzle;
+    [SerializeField] GameObject pet;
 
     // 메모리 풀로 사용할 게임 오브젝트
     [SerializeField] Bullet lazerPrefab;
@@ -47,6 +48,13 @@ public class Controller : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.state == false) return;
+
+        //0이면 펫을 구매하지 않을상태
+        if (GameManager.instance.dragon >= 1)
+        {
+            pet.SetActive(true);
+        }
+
         float x = Input.GetAxis("Mouse X");
 
         Vector3 direction = new Vector3( x, 0, 0);
